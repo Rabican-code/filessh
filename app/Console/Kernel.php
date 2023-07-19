@@ -12,7 +12,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('files:delete-expired')->daily();
+
     }
 
     /**
@@ -20,12 +20,6 @@ class Kernel extends ConsoleKernel
      */
     protected function commands(): void
     {
-        $this->load(__DIR__.'/Commands');
 
-        require base_path('routes/console.php');
-
-        $this->commands([
-            \App\Console\Commands\DeleteExpiredFiles::class,
-        ]);
     }
 }
