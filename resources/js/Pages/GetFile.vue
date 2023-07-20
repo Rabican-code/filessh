@@ -1,7 +1,8 @@
 <script setup>
 import Swal from "sweetalert2";
-import { ref, defineProps } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
+import { ref, defineProps } from "vue";
+
 const props = defineProps({
   files: Array
 });
