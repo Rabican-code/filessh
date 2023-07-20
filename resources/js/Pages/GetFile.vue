@@ -5,7 +5,7 @@ import { ref, defineProps } from "vue";
 const props = defineProps({
   files: Array
 });
-
+console.log(props.files);
 const deleteFile = () => {
   const confirmed = confirm("Are you sure you want to delete this file?");
   if (confirmed) {
@@ -35,10 +35,8 @@ const downloadFile = () => {
 <template>
   <div class="flex justify-center">
     <div class="overflow-hidden rounded-lg bg-white shadow">
-      <!-- We've used 3xl here, but feel free to try other max-widths based on your needs -->
       <div class="px-4 py-5 sm:p-6">
-        <!-- <div class="relative h-64 overflow-hidden rounded border border-dashed border-gray-400 opacity-75"> -->
-        <h2 class="text-center my-4">Download {{ files.name }}</h2>
+        <h2 class="text-center my-4">Download {{ props.files.name }}</h2>
         <button
           type="button"
           @click="downloadFile"

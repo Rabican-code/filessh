@@ -43,7 +43,7 @@ class AppController extends Controller
             return redirect()->to('/download/' . $data['files']->slug);
         } else {
 
-            return Inertia::render('GetFile', $data);
+            return Inertia::render('GetFile',$data);
         }
     }
 
