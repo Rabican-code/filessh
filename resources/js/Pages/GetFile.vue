@@ -35,7 +35,8 @@ const downloadFile = () => {
 </script>
 
 <template>
-  <AppLayout title="Dashboard">
+    <div>
+
     <div>
       <div class="flex justify-center mt-5">
         <div class="overflow-hidden rounded-lg bg-white shadow">
@@ -56,6 +57,6 @@ const downloadFile = () => {
         </div>
       </div>
     </div>
-  </AppLayout>
+</div>
 </template>
 
