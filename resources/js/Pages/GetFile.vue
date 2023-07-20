@@ -5,6 +5,7 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 const props = defineProps({
   files: Array
 });
+
 console.log(props.files);
 const deleteFile = () => {
   const confirmed = confirm("Are you sure you want to delete this file?");
@@ -34,7 +35,6 @@ const downloadFile = () => {
 
 <template>
   <AppLayout title="Dashboard">
-
     <div>
       <div class="flex justify-center mt-5">
         <div class="overflow-hidden rounded-lg bg-white shadow">
