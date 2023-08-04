@@ -1,6 +1,10 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Components/Welcome.vue";
+import { ref, defineProps } from "vue";
+const props = defineProps({
+  token: Array
+});
 </script>
 
 <template>
@@ -11,10 +15,10 @@ import Welcome from "@/Components/Welcome.vue";
 
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-          <div>
+        <div class="m-4 p-4 bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
-          </div>
+            <h2>Token:{{ props.token}}</h2>
+
         </div>
       </div>
     </div>

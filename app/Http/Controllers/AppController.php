@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File as FacadesFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -15,11 +16,20 @@ class AppController extends Controller
     {
         $uploadedContent = $request->getContent();
 
-        $file = Storage::disk("public")->put('uploads/' . $fileName, $uploadedContent);
-
-        $filePath = "/storage/uploads/" . $fileName;
-
-        $slug = Str::uuid();
+        if (Auth::check()) {
+            dd("Uploaded file to private folder");
+            $user = Auth::user();
+            $userFolder = 'user_files/' . $user->id;
+            Storage::disk('public')->makeDirectory($userFolder);
+            $file = Storage::disk('public')->put($userFolder . '/' . $fileName, $uploadedContent);
+            $filePath = "/storage/" . $userFolder . "/" . $fileName;
+            $slug = Str::uuid();
+        } else {
+            dd("Uploaded file to public folder");
+            $file = Storage::disk("public")->put('uploads/' . $fileName, $uploadedContent);
+            $filePath = "/storage/uploads/" . $fileName;
+            $slug = Str::uuid();
+        }
 
         $fileModel = new File();
         $fileModel->name = $fileName;
@@ -43,12 +53,21 @@ class AppController extends Controller
             return redirect()->to('/download/' . $data['files']->slug);
         } else {
 
-            return Inertia::render('GetFile',$data);
+            return Inertia::render('GetFile', $data);
         }
+    }
+
+    public function Token(Request $request)
+    {
+        $user = Auth::user();
+        $data['token'] = $user->createToken('token-name')->plainTextToken;
+
+        return Inertia::render('Dashboard', $data);
     }
 
     public function downloadFile($slug)
     {
+
         $fileModel = File::where('slug', $slug)->firstOrFail();
 
         if ($fileModel->hasExpired()) {
@@ -75,9 +94,6 @@ class AppController extends Controller
         }
     }
 
-
-
-
     public function deleteFile($id)
     {
         $file = File::where('id', $id)->firstOrFail();
@@ -87,5 +103,8 @@ class AppController extends Controller
 
             $file->delete();
         }
+
     }
+
+
 }

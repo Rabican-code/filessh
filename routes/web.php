@@ -15,10 +15,9 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/download/{slug}', [AppController::class, 'downloadFile'])->name('download');
+
 Route::put('/{fileName}', [AppController::class, 'sendFile']);
-Route::get('/{fileSlug}/{fileName}', [AppController::class, 'getFile']);
-Route::delete('/delete/{id}', [AppController::class, 'deleteFile']);
+
 Route::get('/welcome', function () {
     return Inertia::render('Welcome');
 })->name('welcome');
@@ -36,7 +35,8 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [AppController::class, 'Token'])->name('dashboard');
+    Route::get('/download/{slug}', [AppController::class, 'downloadFile'])->name('download');
+    Route::get('/{fileSlug}/{fileName}', [AppController::class, 'getFile']);
+    Route::delete('/delete/{id}', [AppController::class, 'deleteFile']);
 });
