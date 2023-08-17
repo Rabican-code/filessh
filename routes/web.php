@@ -16,7 +16,13 @@ use Inertia\Inertia;
 |
 */
 
+
 Route::put('/{fileName}', [AppController::class, 'sendFile']);
+Route::get('/privateDownload/{slug}', [AppController::class, 'privateDownloadFile']);
+Route::get('/download/{slug}', [AppController::class, 'downloadFile'])->name('download');
+Route::get('/{fileSlug}/{fileName}', [AppController::class, 'getFile']);
+Route::delete('/delete/{id}', [AppController::class, 'deleteFile']);
+
 
 Route::get('/welcome', function () {
     return Inertia::render('Welcome');
@@ -36,7 +42,4 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', [AppController::class, 'Token'])->name('dashboard');
-    Route::get('/download/{slug}', [AppController::class, 'downloadFile'])->name('download');
-    Route::get('/{fileSlug}/{fileName}', [AppController::class, 'getFile']);
-    Route::delete('/delete/{id}', [AppController::class, 'deleteFile']);
 });

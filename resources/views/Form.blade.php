@@ -1,21 +1,18 @@
-<form action="/" method="POST" enctype="multipart/form-data">
-    @csrf
-    <div>
-        <label for="file">File:</label>
-        <input type="file" id="file" name="file" required>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
 
-    <div>
-        <label for="max_downloads">Max Downloads:</label>
-        <input type="number" id="max_downloads" name="max_downloads" value="5" required>
-    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
 
-    <div>
-        <label for="expire_after">Expire After (in days):</label>
-        <input type="number" id="expire_after" name="expire_after" value="1" required>
-    </div>
+<body>
+    <form action="/logout" method="POST" enctype="multipart/form-data">
+        @csrf
+            <button type="submit">Check Logout</button>
+        </div>
+    </form>
+</body>
 
-    <div>
-        <button type="submit">Upload</button>
-    </div>
-</form>
+</html>
