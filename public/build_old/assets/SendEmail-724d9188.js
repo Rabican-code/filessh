@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-c27b6911.js";import{o,c}from"./app-5ac87b3c.js";const n={},r={href:"/sendEmail"};function t(a,s){return o(),c("a",r,"Send Email")}const f=e(n,[["render",t]]);export{f as default};

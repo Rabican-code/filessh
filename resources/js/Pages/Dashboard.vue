@@ -15,8 +15,8 @@ const props = defineProps({
 </script>
 
 <template>
-  <div >
-    <Navbar/>
+  <div>
+    <Navbar />
     <div class="bg-gray-900">
       <div class="relative isolate pt-14">
         <div class="py-24 sm:py-32 lg:pb-40">
@@ -47,74 +47,75 @@ const props = defineProps({
         </div>
       </div>
     </div>
+    <div >
+      <div id="docs" class="bg-gray-900 py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl lg:mx-0">
+            <h2 class="text-base font-semibold leading-7 text-indigo-400">Everything you need</h2>
+          </div>
+          <dl
+            class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 text-base leading-7 text-gray-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:gap-x-16">
+            <div class="relative pl-9">
+              <dt class="inline font-semibold text-white">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                Upload A File.
+              </dt>
+              <div>curl --upload-file path/to/file.txt https://Filessh.staging.codebihar.com/</div>
 
-    <div id="docs" style="scroll-behavior: smooth ;"  class="scroll-behavior: smooth bg-gray-900 py-24 sm:py-32">
-      <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="mx-auto max-w-2xl lg:mx-0">
-          <h2 class="text-base font-semibold leading-7 text-indigo-400">Everything you need</h2>
+              <dd class="inline"></dd>
+            </div>
+
+            <div class="relative pl-9">
+              <dt class="inline font-semibold text-white">
+                Download A File.
+              </dt><br>
+              <dd class="inline">curl -L https://Filessh.staging.codebihar.com/3d1fd43a21/filename.txt > filename.txt
+              </dd>
+            </div>
+            <div class="relative pl-9">
+              <dt class="inline font-semibold text-white">
+                Max Downloads.
+              </dt> <br>
+              <dd class="inline">curl --upload-file path/to/file.gif https://Filessh.staging.codebihar.com/ -H
+                "Max-Downloads: 10"
+              </dd>
+            </div>
+            <div class="relative pl-9">
+              <dt class="inline font-semibold text-white">
+                Rename A File.
+              </dt><br>
+              <dd class="inline">curl --upload-file path/to/file.gif https://Filessh.staging.codebihar.com/new-name</dd>
+            </div>
+            <div class="relative pl-9">
+              <dt class="inline font-semibold text-white">
+                Delete A File After Some Time.
+              </dt><br>
+              <dd class="inline">curl --upload-file path/to/file.gif https://Filessh.staging.codebihar.com/ -H
+                "Expires-After 10"</dd>
+            </div>
+            <div class="relative pl-9">
+              <dt class="inline font-semibold text-white">
+                Upload to A Personal Bucket.
+              </dt><br>
+              <dd class="inline">curl --upload-file path/to/file.gif https://Filessh.staging.codebihar.com/ -H
+                "Authorization: bearer your-token"
+              </dd>
+            </div>
+          </dl>
         </div>
-        <dl
-          class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 text-base leading-7 text-gray-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:gap-x-16">
-          <div class="relative pl-9">
-            <dt class="inline font-semibold text-white">
-              <i class="fa-solid fa-cloud-arrow-up"></i>
-              Upload A File.
-            </dt>
-            <div>curl --upload-file path/to/file.txt https://Filessh.staging.codebihar.com/</div>
 
-            <dd class="inline"></dd>
-          </div>
+        <div class="my-12 text-white flex justify-center">
+          <div class="bg-gray-700 rounded-lg w-max p-2">
+            <div class="flex justify-between">
+              <div class=" pl-2 text-md"> Hey {{ props.user.name }}, This is your Token :</div>
 
-          <div class="relative pl-9">
-            <dt class="inline font-semibold text-white">
-              Download A File.
-            </dt><br>
-            <dd class="inline">curl -L https://Filessh.staging.codebihar.com/3d1fd43a21/filename.txt > filename.txt
-            </dd>
+            </div>
+            <div class="bg-gray-800 rounded-lg w-[40rem] pl-3 py-2 "> {{ props.token }}</div>
           </div>
-          <div class="relative pl-9">
-            <dt class="inline font-semibold text-white">
-              Max Downloads.
-            </dt> <br>
-            <dd class="inline">curl --upload-file path/to/file.gif https://Filessh.staging.codebihar.com/ -H
-              "Max-Downloads: 10"
-            </dd>
-          </div>
-          <div class="relative pl-9">
-            <dt class="inline font-semibold text-white">
-              Rename A File.
-            </dt><br>
-            <dd class="inline">curl --upload-file path/to/file.gif https://Filessh.staging.codebihar.com/new-name</dd>
-          </div>
-          <div class="relative pl-9">
-            <dt class="inline font-semibold text-white">
-              Delete A File After Some Time.
-            </dt><br>
-            <dd class="inline">curl --upload-file path/to/file.gif https://Filessh.staging.codebihar.com/ -H
-              "Expires-After 10"</dd>
-          </div>
-          <div class="relative pl-9">
-            <dt class="inline font-semibold text-white">
-              Upload to A Personal Bucket.
-            </dt><br>
-            <dd class="inline">curl --upload-file path/to/file.gif https://Filessh.staging.codebihar.com/ -H
-              "Authorization: bearer your-token"
-            </dd>
-          </div>
-        </dl>
-      </div>
-
-      <div class="my-12 text-white flex justify-center">
-        <div class="bg-gray-700 rounded-lg w-max p-2">
-          <div class="flex justify-between">
-            <div class=" pl-2 text-md"> Hey {{ props.user.name }}, This is your Token :</div>
-
-          </div>
-          <div class="bg-gray-800 rounded-lg w-[40rem] pl-3 py-2 "> {{ props.token }}</div>
         </div>
       </div>
     </div>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 <script>
