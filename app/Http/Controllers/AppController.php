@@ -17,7 +17,7 @@ class AppController extends Controller
         $uploadedContent = $request->getContent();
 
         if (Auth::check()) {
-            dd("Uploaded file to private folder");
+
             $user = Auth::user();
             $userFolder = 'user_files/' . $user->id;
             Storage::disk('public')->makeDirectory($userFolder);
@@ -25,7 +25,7 @@ class AppController extends Controller
             $filePath = "/storage/" . $userFolder . "/" . $fileName;
             $slug = Str::uuid();
         } else {
-            dd("Uploaded file to public folder");
+
             $file = Storage::disk("public")->put('uploads/' . $fileName, $uploadedContent);
             $filePath = "/storage/uploads/" . $fileName;
             $slug = Str::uuid();
